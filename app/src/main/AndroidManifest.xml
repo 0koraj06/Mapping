@@ -24,6 +24,8 @@ package="com.example.a0koraj06.mapping">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-</application>
+        <activity android:name=".MapChooseActivity" android:label="@string/choosemap">
+        </activity>
+    </application>
 
 </manifest>

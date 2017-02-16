@@ -90,9 +90,9 @@ public class HelloMap extends Activity implements OnClickListener {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
 
-        if (requestCode == 0) {
+        if (resultCode == RESULT_OK) {
 
-            if (resultCode == RESULT_OK) {
+            if (requestCode == 0) {
                 Bundle extras = intent.getExtras();
                 boolean cyclemap = extras.getBoolean("com.example.cyclemap");
                 if (cyclemap == true) {
@@ -100,15 +100,14 @@ public class HelloMap extends Activity implements OnClickListener {
                 } else {
                     mv.setTileSource(TileSourceFactory.MAPNIK);
                 }
+            }
 
-                if (requestCode == 1)
-                     extras = intent.getExtras();
-                boolean setLocation = extras.getBoolean("com.example.setLocation");
-                if (setLocation == true) {
-                    mv.setTileSource(TileSourceFactory.CYCLEMAP);
-                } else {
-                    mv.setTileSource(TileSourceFactory.MAPNIK);
-                }
+            if (requestCode == 1){
+
+                Bundle extras = intent.getExtras();
+                double latitudesl = extras.getDouble("com.example.SetLatitude");
+                double longitudesl = extras.getDouble("com.example.SetLongitude");
+                mv.getController().setCenter(new GeoPoint(latitudesl, longitudesl));
 
             }
         }

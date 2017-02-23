@@ -7,6 +7,7 @@ package com.example.a0koraj06.mapping;
 import android.app.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -42,11 +43,25 @@ public class SetLocation extends Activity implements OnClickListener {
         }
 
     public void onClick(View view) {
+
+
+
+
+
         EditText et1 = (EditText) findViewById(R.id.latitudesl);
         double latitudesl = Double.parseDouble(et1.getText().toString());
         EditText et2 = (EditText) findViewById(R.id.longitudesl);
         double longitudesl = Double.parseDouble(et2.getText().toString());
         mv.getController().setCenter(new GeoPoint(latitudesl, longitudesl));
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble("com.example.latitudes1", latitudesl);
+        bundle.putDouble("com.example.longitudes1", longitudesl);
+
+        Intent intent = new Intent();
+        intent.putExtras(bundle);
+        setResult(RESULT_OK,intent);
+        finish();
 
     }
 }

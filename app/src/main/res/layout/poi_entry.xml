@@ -9,8 +9,8 @@
         android:id="@+id/poi_desc" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="99dp"
+        android:layout_height="99dp"
         android:id="@+id/imageView"
         android:layout_gravity="right"
         android:src="@mipmap/ic_launcher" />

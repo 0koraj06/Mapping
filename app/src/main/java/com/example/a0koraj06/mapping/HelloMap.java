@@ -21,7 +21,7 @@ import android.widget.EditText;
 
 
 
-public class HelloMap extends Activity implements OnClickListener {
+public class HelloMap extends Activity {
 
     MapView mv;
 
@@ -42,22 +42,7 @@ public class HelloMap extends Activity implements OnClickListener {
         mv.getController().setZoom(14);
         mv.getController().setCenter(new GeoPoint(44, 11.5));
 
-        Button b = (Button) findViewById(R.id.button);
-        b.setOnClickListener(this);
-
     }
-
-
-    public void onClick(View view) {
-
-        EditText et1 = (EditText) findViewById(R.id.latitude);
-        double latitude = Double.parseDouble(et1.getText().toString());
-        EditText et2 = (EditText) findViewById(R.id.longitude);
-        double longitude = Double.parseDouble(et2.getText().toString());
-        mv.getController().setCenter(new GeoPoint(latitude, longitude));
-
-    }
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -77,9 +62,15 @@ public class HelloMap extends Activity implements OnClickListener {
         }
 
 
-         if (item.getItemId() == R.id.setlocation) {
+        if (item.getItemId() == R.id.setlocation) {
             Intent intent = new Intent(this, SetLocation.class);
             startActivityForResult(intent, 1);            // react to the menu item being selected...
+            return true;
+        }
+
+        if (item.getItemId() == R.id.poilist) {
+            Intent intent = new Intent(this, PoiListActivity.class);
+            startActivityForResult(intent, 0);            // react to the menu item being selected...
             return true;
         }
 

@@ -2,6 +2,7 @@ package com.example.a0koraj06.mapping;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -40,10 +41,25 @@ public class HelloMap extends Activity {
 
         mv.setBuiltInZoomControls(true);
         mv.getController().setZoom(14);
-        mv.getController().setCenter(new GeoPoint(44, 11.5));
+        mv.getController().setCenter(new GeoPoint(40.1, 22.5));
 
     }
 
+
+    public void onStart()
+    {
+        super.onStart();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        double lat = Double.parseDouble ( prefs.getString("lat", "50.9") );
+        double lon = Double.parseDouble ( prefs.getString("lon", "-1.4") );
+        mv.getController().setCenter(new GeoPoint(lat,lon));
+        int zoom = Integer.parseInt(prefs.getString("zoom", "14"));
+        mv.getController().setZoom(zoom);
+
+
+
+
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_hello_map, menu);

@@ -35,7 +35,7 @@ public class SetLocation extends Activity implements OnClickListener {
 
             mv.setBuiltInZoomControls(true);
             mv.getController().setZoom(14);
-            mv.getController().setCenter(new GeoPoint(51.5074, 0.1278));
+            mv.getController().setCenter(new GeoPoint(51.3, -0.098));
 
             Button buttonsl = (Button) findViewById(R.id.buttonsl);
             buttonsl.setOnClickListener(this);
